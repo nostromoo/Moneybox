@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/albumListFragment">
-
+    app:startDestination="@id/loginFragment">
     <fragment
-        android:id="@+id/albumListFragment"
-        android:name="fr.cedriccreusot.presentation.list.fragments.AlbumListFragment"
-        android:label="AlbumListFragment" >
+        android:id="@+id/loginFragment"
+        android:name="com.example.minimoneybox.login.LoginFragment"
+        android:label="LoginFragment" >
         <action
-            android:id="@+id/action_albumListFragment_to_albumDetailFragment"
-            app:destination="@id/albumDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/albumDetailFragment"
-        android:name="fr.cedriccreusot.presentation.detail.fragments.AlbumDetailFragment"
-        android:label="AlbumDetailFragment" >
+            android:id="@+id/action_loginFragment_to_userAccountsFragment"
+            app:destination="@id/userAccountsFragment" />
         <argument
-            android:name="albumId"
+            android:name="bearer"
             app:argType="string"
             android:defaultValue='""' />
     </fragment>
+    <fragment
+        android:id="@+id/userAccountsFragment"
+        android:name="com.example.minimoneybox.userAccounts.UserAccountsFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_userAccountsFragment_to_individualAccountFragment"
+            app:destination="@id/individualAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/individualAccountFragment"
+        android:name="com.example.minimoneybox.individualAccount.IndividualAccountFragment"
+        android:label="LoginFragment" >
+    </fragment>
+
 </navigation>

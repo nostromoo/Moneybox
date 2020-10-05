@@ -1,26 +1,25 @@
 package com.example.minimoneybox
 
 import android.app.Application
+import com.example.minimoneybox.data.LoginRepository
+import com.example.minimoneybox.data.LoginRepositoryImpl
+import com.example.minimoneybox.login.LoginViewModel
+import com.example.minimoneybox.retrofit.MoneyBoxService
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
+import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
 class MoneyBoxApplication : Application() {
 
     private val appModule = module {
-        // Network and Cache
-//        single { AlbumsService.createService() }
-//        single<Cache> { FileSystemCache(get()) }
-//        single<AlbumsRepository> { AlbumsRepositoryAdapter(get(), get()) }
+//         Network
+        single { MoneyBoxService.createService() }
+        single<LoginRepository> { LoginRepositoryImpl(get()) }
 
-        // UseCase
-//        single { FetchAlbumsUseCase.create(get()) }
-//        single { FetchTracksForAlbumUseCase.create(get()) }
-
-        // ViewModel
-//        viewModel { AlbumListViewModel(get()) }
-//        viewModel { (albumId : String) -> TrackListViewModel(get(), albumId) }
+//         ViewModel
+        viewModel { LoginViewModel(get()) }
     }
 
     override fun onCreate() {
